@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Success Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header>
+        <h1>🎓 Student Success Prediction Dashboard</h1>
+        <p>Predict academic risk using Machine Learning</p>
+    </header>
+
+    <!-- DASHBOARD CARDS -->
+    <div class="cards">
+        <div class="card">
+            <h3>Total Students</h3>
+            <p>75,000</p>
+        </div>
+        <div class="card">
+            <h3>High Risk</h3>
+            <p>12,000</p>
+        </div>
+        <div class="card">
+            <h3>Medium Risk</h3>
+            <p>63,000</p>
+        </div>
+        <div class="card">
+            <h3>Model Accuracy</h3>
+            <p>99%</p>
+        </div>
+    </div>
+
+    <!-- SEARCH (VISUAL FEATURE) -->
+    <div class="search-box">
+        <input type="text" placeholder="Search Student ID / Name (demo)">
+    </div>
+
+    <!-- PREDICTION FORM -->
+    <div class="form-box">
+        <h2>🔍 Predict Student Risk</h2>
+
+        <div class="form-grid">
+            <input id="Age" type="number" placeholder="Age">
+            <input id="Gender" placeholder="Gender (Male/Female)">
+            <input id="AttendanceRate" type="number" placeholder="Attendance %">
+            <input id="StudyHoursPerWeek" type="number" placeholder="Study Hours / Week">
+            <input id="PreviousGPA" type="number" placeholder="Previous GPA">
+        </div>
+
+        <button onclick="predict()">Predict Risk</button>
+
+        <div id="result" class="result-box"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

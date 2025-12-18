@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Student Success Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Student Success Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-<div class="container">
+<div class="dashboard">
 
-    <!-- HEADER -->
-    <header>
-        <h1>🎓 Student Success Prediction Dashboard</h1>
-        <p>Predict academic risk using Machine Learning</p>
-    </header>
+  <header>
+    <h1>🎓 Student Success Prediction Dashboard</h1>
+    <p>AI-powered academic risk analysis</p>
+  </header>
 
-    <!-- DASHBOARD CARDS -->
-    <div class="cards">
-        <div class="card">
-            <h3>Total Students</h3>
-            <p>75,000</p>
-        </div>
-        <div class="card">
-            <h3>High Risk</h3>
-            <p>12,000</p>
-        </div>
-        <div class="card">
-            <h3>Medium Risk</h3>
-            <p>63,000</p>
-        </div>
-        <div class="card">
-            <h3>Model Accuracy</h3>
-            <p>99%</p>
-        </div>
+  <!-- KPI CARDS -->
+  <div class="cards">
+    <div class="card">📊 Model Type<br><b>ML Classifier</b></div>
+    <div class="card">⚙ Backend<br><b>Flask + Render</b></div>
+    <div class="card">🌐 Frontend<br><b>Netlify</b></div>
+  </div>
+
+  <!-- MAIN SECTION -->
+  <div class="main">
+
+    <!-- FORM -->
+    <div class="panel">
+      <h2>Student Details</h2>
+
+      <label>Previous GPA</label>
+      <input type="number" step="0.1" id="gpa">
+
+      <label>Attendance (%)</label>
+      <input type="number" id="attendance">
+
+      <label>Study Hours / Day</label>
+      <input type="number" id="studyHours">
+
+      <button onclick="predict()">Predict Risk</button>
+
+      <div id="result"></div>
     </div>
 
-    <!-- SEARCH (VISUAL FEATURE) -->
-    <div class="search-box">
-        <input type="text" placeholder="Search Student ID / Name (demo)">
+    <!-- CHART -->
+    <div class="panel">
+      <h2>Risk Visualization</h2>
+      <canvas id="riskChart"></canvas>
     </div>
 
-    <!-- PREDICTION FORM -->
-    <div class="form-box">
-        <h2>🔍 Predict Student Risk</h2>
+  </div>
 
-        <div class="form-grid">
-            <input id="Age" type="number" placeholder="Age">
-            <input id="Gender" placeholder="Gender (Male/Female)">
-            <input id="AttendanceRate" type="number" placeholder="Attendance %">
-            <input id="StudyHoursPerWeek" type="number" placeholder="Study Hours / Week">
-            <input id="PreviousGPA" type="number" placeholder="Previous GPA">
-        </div>
-
-        <button onclick="predict()">Predict Risk</button>
-
-        <div id="result" class="result-box"></div>
-    </div>
+  <!-- HISTORY TABLE -->
+  <div class="panel">
+    <h2>Prediction History</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>GPA</th>
+          <th>Attendance</th>
+          <th>Study Hours</th>
+          <th>Risk</th>
+        </tr>
+      </thead>
+      <tbody id="history"></tbody>
+    </table>
+  </div>
 
 </div>
 

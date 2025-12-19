@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Success Prediction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎓 Student Success Prediction</h1>
+    <p class="subtitle">Predict academic risk using AI & Machine Learning</p>
+
+    <!-- FORM -->
+    <div class="card">
+      <h2>Enter Student Details</h2>
+
+      <label>Previous GPA (0–10)</label>
+      <input type="number" id="gpa" step="0.1" min="0" max="10" placeholder="e.g. 7.5" />
+
+      <label>Attendance (%)</label>
+      <input type="number" id="attendance" min="0" max="100" placeholder="e.g. 85" />
+
+      <label>Study Hours / Week</label>
+      <input type="number" id="studyHours" min="0" placeholder="e.g. 20" />
+
+      <button onclick="predict()">Predict Risk</button>
+
+      <div id="loading" class="loading">⏳ Predicting...</div>
+      <div id="result" class="result"></div>
+    </div>
+
+    <!-- CHART -->
+    <div class="card">
+      <h2>Risk Distribution</h2>
+      <canvas id="riskChart"></canvas>
+    </div>
+
+    <!-- HISTORY -->
+    <div class="card">
+      <h2>Prediction History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>GPA</th>
+            <th>Attendance</th>
+            <th>Study Hours</th>
+            <th>Risk</th>
+          </tr>
+        </thead>
+        <tbody id="history"></tbody>
+      </table>
+    </div>
+
+    <footer>
+      Built with ❤️ using Flask, ML & Netlify
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

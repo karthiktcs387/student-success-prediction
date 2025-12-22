@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Absolute path (Render + Local safe)
+# Absolute path (Railway + Local safe)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 model = joblib.load(os.path.join(BASE_DIR, "student_model.pkl"))
@@ -21,9 +21,7 @@ def predict():
     input_data = []
 
     for col in features:
-        # If value not provided
         if col not in data:
-            # For categorical: use first known class
             if col in encoders:
                 value = encoders[col].classes_[0]
             else:
@@ -31,7 +29,6 @@ def predict():
         else:
             value = data[col]
 
-        # Encode categorical safely
         if col in encoders:
             value = str(value)
             if value not in encoders[col].classes_:
@@ -42,16 +39,13 @@ def predict():
 
     prediction = model.predict([input_data])[0]
 
-    risk_map = {
-        0: "Low",
-        1: "Medium",
-        2: "High"
-    }
+    risk_map = {0: "Low", 1: "Medium", 2: "High"}
 
     return jsonify({
         "predicted_risk": risk_map.get(int(prediction), "Unknown")
     })
 
+# ✅ THIS IS THE IMPORTANT PART
 if __name__ == "__main__":
-    print("Starting Flask server...")
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
